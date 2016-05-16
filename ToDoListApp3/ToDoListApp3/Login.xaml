@@ -1,7 +1,5 @@
-﻿
-
-<Page
-    x:Class="ToDoListApp3.MainPage"
+﻿<Page
+    x:Class="ToDoListApp3.Login"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ToDoListApp3"
@@ -9,11 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-
     <Page.TopAppBar>
         <CommandBar>
             <CommandBar.Content>
-                <TextBlock x:Name="WelcomeTextBlock"  FontFamily="Arial" Text="Welcome"
+                <TextBlock x:Name="UserName"  FontFamily="Arial" Text="Username - To Do List"
                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,20,0,0" />
             </CommandBar.Content>
         </CommandBar>
@@ -24,8 +21,8 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Icon="OtherUser" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="AboutButton" Label="About" Click="About_Click" />
-            <AppBarButton Icon="Accept" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="LoginButton" Label="Login" Click="Login_Click" />
+            <AppBarButton Icon="OtherUser" HorizontalAlignment="Center" x:Uid="About" Label="About"/>
+            <AppBarButton Icon="Add" HorizontalAlignment="Center" x:Uid="AddTask" Label="Add Task" Click="AddTask_Click"/>
 
         </CommandBar>
     </Page.BottomAppBar>
@@ -36,13 +33,16 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "Auto" />
+            <ColumnDefinition Width = "0.2*" />
+            <ColumnDefinition Width = "0.8*" />
         </Grid.ColumnDefinitions>
 
+        <ListBox Grid.ColumnSpan="2">
+            <ListBoxItem Content="First" />
+            <ListBoxItem Content="Second" />
+            <ListBoxItem Content="Third" />
+        </ListBox>
 
-        <TextBox x:Name="UsernameTextBox" Width="300" Header="Username"
-                 PlaceholderText="Provide your username" />
 
     </Grid>
 </Page>
-
