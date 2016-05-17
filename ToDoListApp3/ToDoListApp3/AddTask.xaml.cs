@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using ToDoList.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,13 +26,14 @@ namespace ToDoList
         public AddTask()
         {
             this.InitializeComponent();
+            DataContext = MainViewModel.Singleton();
         }
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
             RESTManager restManager = new RESTManager();
-            ToDoTask xyz = new ToDoTask { Id = 0, Title = NewTaskTitleTextBox.Text, Value = NewTaskValueTextBox.Text, OwnerId = "asiawetesko", CreatedAt = DateTime.Now.ToString() };
-            restManager.postTask(xyz);
+            ToDoTask newTask = new ToDoTask { Id = 0, Title = NewTaskTitleTextBox.Text, Value = NewTaskValueTextBox.Text, OwnerId = MainViewModel.OwnerId, CreatedAt = DateTime.Now.ToString() };
+            restManager.postTask(newTask);
 
             Frame.Navigate(typeof(Login));
         }

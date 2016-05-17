@@ -10,7 +10,7 @@
     <Page.TopAppBar>
         <CommandBar>
             <CommandBar.Content>
-                <TextBlock x:Name="UserName"  FontFamily="Arial" Text="Username - To Do List"
+                <TextBlock x:Name="UserName"  FontFamily="Arial" Text="{Binding OwnerId}"
                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,20,0,0" />
             </CommandBar.Content>
         </CommandBar>
