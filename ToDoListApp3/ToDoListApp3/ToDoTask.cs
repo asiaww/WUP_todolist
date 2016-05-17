@@ -1,16 +1,18 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace ToDoListApp3
+namespace ToDoList
 {
-    class ToDoTask
+    public class ToDoTask
     {
 
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Value { get; set; }
         public string OwnerId { get; set; }
         public string CreatedAt { get; set; }
+
+        public ToDoTask() { }
 
         public ToDoTask(int Id, string Title, string Value, string OwnerId, string CreatedAt)
         {
@@ -23,7 +25,7 @@ namespace ToDoListApp3
 
         public ToDoTask(string Title, string Value, string OwnerId)
         {
-            Id = null;
+            Id = 0;
             this.Title = Title;
             this.Value = Value;
             this.OwnerId = OwnerId;
@@ -34,6 +36,5 @@ namespace ToDoListApp3
         {
             return JsonConvert.SerializeObject(this);
         }
-
-     }
+    }
 }

@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace ToDoListApp3
+namespace ToDoList
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -25,6 +25,15 @@ namespace ToDoListApp3
         public AddTask()
         {
             this.InitializeComponent();
+        }
+
+        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            RESTManager restManager = new RESTManager();
+            ToDoTask xyz = new ToDoTask { Id = 0, Title = NewTaskTitleTextBox.Text, Value = NewTaskValueTextBox.Text, OwnerId = "asiawetesko", CreatedAt = DateTime.Now.ToString() };
+            restManager.postTask(xyz);
+
+            Frame.Navigate(typeof(Login));
         }
     }
 }
