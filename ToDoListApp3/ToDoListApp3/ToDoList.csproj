@@ -120,6 +120,8 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <PRIResource Include="Strings\pl-PL\Resources.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
     <None Include="ToDoListApp3_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

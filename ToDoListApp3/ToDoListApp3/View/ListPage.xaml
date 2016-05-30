@@ -9,15 +9,18 @@
 
     <Page.Resources>
         <DataTemplate x:Key="TaskDataTemplate">
-            <Grid HorizontalAlignment="Stretch">
+            <Border BorderBrush="Gray" BorderThickness="1" Grid.Row="0" Width="Auto">
+                <Grid HorizontalAlignment="Stretch" Margin="10,10,10,10">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" Grid.Row="0" TextWrapping="WrapWholeWords"></TextBlock>
-            </Grid>
+
+                <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" Grid.Row="0" TextWrapping="WrapWholeWords" Margin="10,10,10,10"></TextBlock>
+                </Grid>
+            </Border>
         </DataTemplate>
     </Page.Resources>
 
@@ -35,9 +38,9 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Icon="LeaveChat" HorizontalAlignment="Center" x:Uid="Logout" Label="Logout" Click="Logout_Click"/>
-            <AppBarButton Icon="Refresh" HorizontalAlignment="Center" x:Uid="Refresh" Label="Refresh" Click="Refresh_Click"/>
-            <AppBarButton Icon="Add" HorizontalAlignment="Center" x:Uid="AddTask" Label="Add Task" Click="AddTask_Click"/>
+            <AppBarButton Icon="Cancel" HorizontalAlignment="Center" x:Uid="LogoutButton" Click="Logout_Click"/>
+            <AppBarButton Icon="Refresh" HorizontalAlignment="Center" x:Uid="RefreshButton" Click="Refresh_Click"/>
+            <AppBarButton Icon="Add" HorizontalAlignment="Center" x:Uid="AddTaskButton" Click="AddTask_Click"/>
 
         </CommandBar>
     </Page.BottomAppBar>

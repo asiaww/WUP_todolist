@@ -13,7 +13,7 @@
     <Page.TopAppBar>
         <CommandBar>
             <CommandBar.Content>
-                <TextBlock x:Name="WelcomeTextBlock"  FontFamily="Arial" Text="Welcome"
+                <TextBlock x:Uid="WelcomeTextBlock"  FontFamily="Arial"
                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,20,0,0" />
             </CommandBar.Content>
         </CommandBar>
@@ -24,8 +24,8 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Icon="OtherUser" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="AboutButton" Label="About" Click="About_Click" />
-            <AppBarButton Icon="Accept" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="LoginButton" Label="Login" Click="Login_Click" />
+            <AppBarButton Icon="OtherUser" HorizontalAlignment="Center" VerticalAlignment="Center" x:Uid="AboutButton" Click="About_Click" />
+            <AppBarButton Icon="Accept" HorizontalAlignment="Center" VerticalAlignment="Center" x:Uid="LoginButton" Click="Login_Click" />
 
         </CommandBar>
     </Page.BottomAppBar>
@@ -40,7 +40,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <TextBox x:Name="UsernameTextBox" Width="300" Header="Username"
+        <TextBox x:Name="UsernameTextBox" x:Uid="UsernameTextBox" Width="300" Header="Username"
                  PlaceholderText="Provide your username" />
 
     </Grid>

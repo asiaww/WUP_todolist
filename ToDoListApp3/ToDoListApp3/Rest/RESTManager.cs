@@ -44,20 +44,11 @@ namespace ToDoList
         //PUT
         public async void updateTask(ToDoTask currentTask)
         {
-            System.Diagnostics.Debug.WriteLine(currentTask.Id);
-            currentTask.CreatedAt = DateTime.Now.ToString("dd'-'MM'-'yyyy HH:mm:ss");
-
             using (HttpClient client = new HttpClient()) {
                 client.BaseAddress = new Uri(REST_BASE_URI);
-
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, REST_PATH + "/" + currentTask.Id);
                 request.Content = new StringContent(currentTask.SerializeToDoTask(), Encoding.UTF8, "application/json");
-
-                await client.SendAsync(request)
-                    .ContinueWith(responseTask =>
-                    {
-                        System.Diagnostics.Debug.WriteLine("Response: {0}", responseTask.Result);
-                    });
+                await client.SendAsync(request);
             }
         }
 

@@ -27,7 +27,6 @@ namespace ToDoListApp3
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine(getViewModel().CurrentTask);
             RESTManager restManager = new RESTManager();
             restManager.deleteTask(getViewModel().CurrentTask);
             Frame.Navigate(typeof(Login));
@@ -35,6 +34,9 @@ namespace ToDoListApp3
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            getViewModel().CurrentTask.Title = TaskTitleTextBox.Text;
+            getViewModel().CurrentTask.Value = TaskValueTextBox.Text;
+
             RESTManager restManager = new RESTManager();
             restManager.updateTask(getViewModel().CurrentTask);
             Frame.Navigate(typeof(Login));
