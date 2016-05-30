@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
+using ToDoList.ViewModel;
 
 namespace ToDoList
 {
@@ -12,15 +13,16 @@ namespace ToDoList
     {
 
         private const string REST_BASE_URI = "http://windowsphoneuam.azurewebsites.net/";
-        private const string REST_PATH = "api/ToDoTasks/";
+        private const string REST_PATH = "api/ToDoTasks";
 
         //GET
-        public async Task<List<ToDoTask>> getTasks(string ownerID)
+        public async Task getTasks(string ownerID, MainViewModel DataContext)
         {
             using (HttpClient client = new HttpClient())
             {
-                var result = await client.GetAsync(REST_BASE_URI + "/" + REST_PATH + "?OwnerId=" + ownerID);
-                return JsonConvert.DeserializeObject <List<ToDoTask>> (await result.Content.ReadAsStringAsync());
+                var result = await client.GetAsync(REST_BASE_URI + REST_PATH + "?OwnerId=" + ownerID);
+                var data = result.Content.ReadAsStringAsync();
+                DataContext.TaskList = JsonConvert.DeserializeObject<ObservableCollection<ToDoTask>>(await data);
             }
         }
 
@@ -42,23 +44,29 @@ namespace ToDoList
         //PUT
         public async void updateTask(ToDoTask currentTask)
         {
+            System.Diagnostics.Debug.WriteLine(currentTask.Id);
+            currentTask.CreatedAt = DateTime.Now.ToString("dd'-'MM'-'yyyy HH:mm:ss");
+
             using (HttpClient client = new HttpClient()) {
                 client.BaseAddress = new Uri(REST_BASE_URI);
 
-                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, REST_PATH + currentTask.Id);
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, REST_PATH + "/" + currentTask.Id);
                 request.Content = new StringContent(currentTask.SerializeToDoTask(), Encoding.UTF8, "application/json");
-                await client.SendAsync(request);
+
+                await client.SendAsync(request)
+                    .ContinueWith(responseTask =>
+                    {
+                        System.Diagnostics.Debug.WriteLine("Response: {0}", responseTask.Result);
+                    });
             }
         }
 
-
         //DELETE
-        public async Task deleteTask(ToDoTask currentTask)
+        public async void deleteTask(ToDoTask currentTask)
         {
             using (HttpClient client = new HttpClient()) {
                 client.BaseAddress = new Uri(REST_BASE_URI);
-
-                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, REST_PATH + currentTask.Id);
+                HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, REST_PATH + "/" + currentTask.Id);
                 await client.SendAsync(request);
             }
         }

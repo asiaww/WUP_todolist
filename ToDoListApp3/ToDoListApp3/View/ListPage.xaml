@@ -7,6 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <DataTemplate x:Key="TaskDataTemplate">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" Grid.Row="0" TextWrapping="WrapWholeWords"></TextBlock>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
     <Page.TopAppBar>
         <CommandBar>
             <CommandBar.Content>
@@ -21,7 +35,8 @@
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
-            <AppBarButton Icon="OtherUser" HorizontalAlignment="Center" x:Uid="About" Label="About"/>
+            <AppBarButton Icon="LeaveChat" HorizontalAlignment="Center" x:Uid="Logout" Label="Logout" Click="Logout_Click"/>
+            <AppBarButton Icon="Refresh" HorizontalAlignment="Center" x:Uid="Refresh" Label="Refresh" Click="Refresh_Click"/>
             <AppBarButton Icon="Add" HorizontalAlignment="Center" x:Uid="AddTask" Label="Add Task" Click="AddTask_Click"/>
 
         </CommandBar>
@@ -37,12 +52,8 @@
             <ColumnDefinition Width = "0.8*" />
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.ColumnSpan="2">
-            <ListBoxItem Content="First" />
-            <ListBoxItem Content="Second" />
-            <ListBoxItem Content="Third" />
+        <ListBox Grid.ColumnSpan="2" x:Name="ToDoListBox" ItemsSource="{ Binding TaskList}" ItemTemplate="{ StaticResource TaskDataTemplate}" SelectionChanged="Task_SelectionChanged">
         </ListBox>
-
 
     </Grid>
 </Page>

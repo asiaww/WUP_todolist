@@ -1,4 +1,5 @@
 ﻿using ToDoList.ViewModel;
+using ToDoListApp3.View;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -20,7 +21,7 @@ namespace ToDoList
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
-            //Frame.Navigate(typeof(Login));
+            Frame.Navigate(typeof(AboutPage));
         }
     }
 }

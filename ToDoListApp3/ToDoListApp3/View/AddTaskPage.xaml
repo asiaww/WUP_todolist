@@ -31,7 +31,7 @@
         <TextBox x:Name="NewTaskValueTextBox" Width="300" Header="Value"
                  PlaceholderText="New Value" Grid.Row="2" Margin="5,5,5,5" />
 
-        <AppBarButton Icon="Back" HorizontalAlignment="Left" x:Name="BackButton" Label="Back" Grid.Row="3" Margin="5,5,5,5"/>
+        <AppBarButton Icon="Back" HorizontalAlignment="Left" x:Name="BackButton" Label="Back" Click ="BackButton_Click" Grid.Row="3" Margin="5,5,5,5"/>
         <AppBarButton Icon="Accept" HorizontalAlignment="Right" x:Name="AcceptButton" Label="Create" Click="AcceptButton_Click" Grid.Row="3" Margin="5,5,5,5"/>
 
     </Grid>

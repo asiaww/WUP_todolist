@@ -37,5 +37,15 @@ namespace ToDoList
 
             Frame.Navigate(typeof(Login));
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Login));
+        }
+
+        private MainViewModel getViewModel()
+        {
+            return DataContext as MainViewModel;
+        }
     }
 }
