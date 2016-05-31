@@ -7,32 +7,52 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.TopAppBar>
+        <CommandBar Background="Coral">
+            <CommandBar.Content>
+                <TextBlock x:Name="AboutTextBlock" x:Uid="AboutTextBlock" FontFamily="Verdana" FontWeight="Thin"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,20,0,0" />
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.TopAppBar>
+
+    <Page.BottomAppBar>
+        <CommandBar Background="Coral">
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Back" HorizontalAlignment="Center" x:Name="BackButton" Label="Back" Click ="BackButton_Click" Margin="5,5,5,5"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid Background="PapayaWhip">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height = "0.1*" />
-            <RowDefinition Height = "0.2*" />
-            <RowDefinition Height = "0.6*" />
-            <RowDefinition Height = "0.1*" />
+            <RowDefinition Height = "0.3*" />
+            <RowDefinition Height = "0.4*" />
+            <RowDefinition Height = "0.3*" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "*" />
+            <ColumnDefinition Width = "0.05*" />
+            <ColumnDefinition Width = "0.9*" />
+            <ColumnDefinition Width = "0.05*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock x:Name="AboutTextBlock" x:Uid="AboutTextBlock" HorizontalAlignment="Center" 
-                   FontFamily="Arial" FontSize="30px" Margin="10,10,10,10" Grid.Row="0">
-        </TextBlock>
+        <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="1" Grid.Column="1" Margin="20,5,10,5" Background="Coral">
+            <Canvas VerticalAlignment="Center" Margin="0,0,0,70">
+                <TextBlock x:Name="AboutDescriptionTextBlock" x:Uid="AboutDescriptionTextBlock"  HorizontalAlignment="Center" FontFamily="Verdana"
+                 FontWeight="SemiBold" Margin="20,5,5,15"/>
 
-        <TextBlock x:Name="AboutDescriptionTextBlock" x:Uid="AboutDescriptionTextBlock"  HorizontalAlignment="Center"
-                 Grid.Row="0" Margin="5,5,5,5"/>
+                <TextBlock x:Name="AboutNameTextBlock" x:Uid="AboutNameTextBlock"  HorizontalAlignment="Center" FontFamily="Verdana"
+                 FontWeight="Light" Margin="10,25,5,5"/>
 
-        <TextBlock x:Name="AboutNameTextBlock" x:Uid="AboutNameTextBlock"  HorizontalAlignment="Center"
-                 Grid.Row="1" Margin="5,5,5,5"/>
+                <TextBlock x:Name="AboutEmailTextBlock" x:Uid="AboutEmailTextBlock"  HorizontalAlignment="Center" FontFamily="Verdana"
+                 FontWeight="Light" Margin="10,45,5,5" />
+            </Canvas>
+        </Border>
 
-        <TextBlock x:Name="AboutEmailTextBlock" x:Uid="AboutEmailTextBlock"  HorizontalAlignment="Center" 
-                 Grid.Row="2" Margin="5,5,5,5" />
 
-        <AppBarButton Icon="Back" HorizontalAlignment="Left" x:Name="BackButton" Label="Back" Click ="BackButton_Click" Grid.Row="3" Margin="5,5,5,5"/>
+        
     </Grid>
 </Page>

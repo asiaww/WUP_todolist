@@ -11,16 +11,16 @@
 
 
     <Page.TopAppBar>
-        <CommandBar>
+        <CommandBar Background="Coral">
             <CommandBar.Content>
-                <TextBlock x:Uid="WelcomeTextBlock"  FontFamily="Arial"
+                <TextBlock x:Uid="WelcomeTextBlock" FontFamily="Verdana" FontWeight="Thin"
                    HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,20,0,0" />
             </CommandBar.Content>
         </CommandBar>
     </Page.TopAppBar>
 
     <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar Background="Coral">
             <CommandBar.Content>
                 <Grid/>
             </CommandBar.Content>
@@ -30,18 +30,26 @@
         </CommandBar>
     </Page.BottomAppBar>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="PapayaWhip">
         <Grid.RowDefinitions>
-            <RowDefinition Height = "Auto" />
+            <RowDefinition Height = "0.3*" />
+            <RowDefinition Height = "0.4*" />
+            <RowDefinition Height = "0.3*" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "Auto" />
+            <ColumnDefinition Width = "0.05*" />
+            <ColumnDefinition Width = "0.9*" />
+            <ColumnDefinition Width = "0.05*" />
         </Grid.ColumnDefinitions>
 
+        <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="1" Grid.Column="1" Margin="20,5,10,5" Background="Coral">
+            <Canvas VerticalAlignment="Center" Margin="0,0,0,70">
+                <TextBox Background="PapayaWhip" x:Name="UsernameTextBox" x:Uid="UsernameTextBox" Width="225" FontWeight="Thin"
+                 VerticalAlignment="Center" FontFamily="sans-serif" Margin="20,5,10,5" Padding="2,2,2,2"/>
+            </Canvas>
+        </Border>
 
-        <TextBox x:Name="UsernameTextBox" x:Uid="UsernameTextBox" Width="300" Header="Username"
-                 PlaceholderText="Provide your username" />
 
     </Grid>
 </Page>

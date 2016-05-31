@@ -121,7 +121,7 @@
     <value>About</value>
   </data>
   <data name="AboutDescriptionTextBlock.Text" xml:space="preserve">
-    <value>The creator of the application you are currently using is:</value>
+    <value>Created by:</value>
   </data>
   <data name="AboutEmailTextBlock.Text" xml:space="preserve">
     <value>asia.wetesko@gmail.com</value>

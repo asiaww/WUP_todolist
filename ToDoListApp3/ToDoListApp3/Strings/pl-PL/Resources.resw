@@ -121,7 +121,7 @@
     <value>O mnie</value>
   </data>
   <data name="AboutDescriptionTextBlock.Text" xml:space="preserve">
-    <value>Twórcą aplikacji, z której właśnie korzystasz jest:</value>
+    <value>Stworzona przez:</value>
   </data>
   <data name="AboutEmailTextBlock.Text" xml:space="preserve">
     <value>asia.wetesko@gmail.com</value>
