@@ -1,17 +1,11 @@
-﻿
-using System.Linq;
-using ToDoList;
+﻿using ToDoList;
 using ToDoList.ViewModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ToDoListApp3
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class DetailsPage : Page
     {
         public DetailsPage()
@@ -29,7 +23,7 @@ namespace ToDoListApp3
         {
             RESTManager restManager = new RESTManager();
             restManager.deleteTask(getViewModel().CurrentTask);
-            Frame.Navigate(typeof(Login));
+            Window.Current.Content = new Login();
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -39,12 +33,12 @@ namespace ToDoListApp3
 
             RESTManager restManager = new RESTManager();
             restManager.updateTask(getViewModel().CurrentTask);
-            Frame.Navigate(typeof(Login));
+            Window.Current.Content = new Login();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Login));
+            Window.Current.Content = new Login();
         }
     }
 }

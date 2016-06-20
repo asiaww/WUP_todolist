@@ -11,7 +11,6 @@ namespace ToDoList
 {
     public class RESTManager
     {
-
         private const string REST_BASE_URI = "http://windowsphoneuam.azurewebsites.net/";
         private const string REST_PATH = "api/ToDoTasks";
 

@@ -11,6 +11,7 @@ namespace ToDoList
         {
             this.InitializeComponent();
             DataContext = MainViewModel.Singleton();
+            getViewModel().loadLocalSettings();
 
             RESTManager restManager = new RESTManager();
             restManager.getTasks(MainViewModel.OwnerId, getViewModel());
@@ -30,24 +31,26 @@ namespace ToDoList
             else
             {
                 getViewModel().CurrentTask = (ToDoTask)ToDoListBox.SelectedItem;
-                Frame.Navigate(typeof(DetailsPage));
+                Window.Current.Content = new DetailsPage();
             }
         }
 
         private void AddTask_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(AddTask));
+            Window.Current.Content = new AddTask();
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Login));
+            Window.Current.Content = new Login();
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
+            getViewModel().removeLocalSettings();
             DataContext = null;
-            Frame.Navigate(typeof(MainPage));
+            Window.Current.Content = new MainPage();
         }
+
     }
 }

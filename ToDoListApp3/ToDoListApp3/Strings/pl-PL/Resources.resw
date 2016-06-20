@@ -150,6 +150,9 @@
   <data name="EditButton.Label" xml:space="preserve">
     <value>Edytuj</value>
   </data>
+  <data name="ErrorText" xml:space="preserve">
+    <value>Musisz podać nazwę użytkownika, aby kontynuować!</value>
+  </data>
   <data name="LoginButton.Label" xml:space="preserve">
     <value>Zaloguj się</value>
   </data>

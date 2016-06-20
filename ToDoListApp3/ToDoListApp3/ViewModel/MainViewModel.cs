@@ -1,10 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using Windows.Storage;
 
 namespace ToDoList.ViewModel
 {
     public class MainViewModel : ViewModel
     {
-        private static MainViewModel MVMinstance { get; set; }
+        private static MainViewModel MVVMinstance { get; set; }
 
         public static string OwnerId { get { return ownerId; } set { ownerId = value; } }
         private static string ownerId { get; set; }
@@ -19,11 +21,40 @@ namespace ToDoList.ViewModel
 
         public static MainViewModel Singleton()
         {
-            if (MVMinstance == null)
+            if (MVVMinstance == null)
             {
-                MVMinstance = new MainViewModel();
+                MVVMinstance = new MainViewModel();
             }
-            return MVMinstance;
+            return MVVMinstance;
         }
+
+        //Local settings manager
+
+        private ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        private const string USERNAME_TAG = "Owner";
+
+
+        public void saveLocalSettings(string username)
+        {
+            localSettings.Values[USERNAME_TAG] = username;
+        }
+
+        public string loadLocalSettings()
+        {
+            Object value = localSettings.Values[USERNAME_TAG];
+            if (value == null)
+                ownerId = "";
+            else
+                ownerId = value.ToString();
+
+            return ownerId;
+        }
+
+        public void removeLocalSettings()
+        {
+            localSettings.Values.Remove(USERNAME_TAG);
+            ownerId = "";
+        }
+
     }
 }
